@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中央认证服务</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" th:href="${#themes.code('aurora.css.file')}" rel="stylesheet">
+    <link rel="icon" th:href="${#themes.code('aurora.favicon')}" type="image/x-icon"/>
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="starter-template">
+        <h2 th:utext="#{screen.logout.header}">Logout successful</h2>
+        <p th:utext="#{screen.logout.success}">You have successfully logged out of the Central Authentication
+            Service. You may <a href="login">log in</a> again.</p>
+        <p th:utext="#{screen.logout.security}">For security reasons, exit your web browser.</p>
+    </div>
+    <div class="copyright">copyright©2019 aurora shimh</div>
+</div><!-- /.container -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+server:
+  port: 2001
+spring:
+  application:
+    name: aurora-monitor
+  security:
+    user:
+      name: shimh
+      password: shimh
+  # spring boot admin 界面配置
+  boot:
+    admin:
+      ui:
+        title: 监控中心
+
+eureka:
+  client:
+    # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:2000}/eureka/
+  instance:
+    # 表示eureka client发送心跳给server端的频率，默认为30秒
+    leaseRenewalIntervalInSeconds: 20
+    # 健康检查的地址（依赖spring-boot-starter-actuator）
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: 监控中心模块

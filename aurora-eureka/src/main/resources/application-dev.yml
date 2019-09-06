@@ -1,0 +1,33 @@
+server:
+  port: 2000
+
+spring:
+  application:
+    name: aurora-eureka
+
+eureka:
+  instance:
+    hostname: aurora-eureka
+    # 应用程序向eureka注册时，它使用其IP地址而不是其主机名
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    # 关闭Eureka 自我保护模式
+    enable-self-preservation: false
+    # 清理间隔（单位毫秒，默认是60*1000），开发环境设置如下可快速移除不可用的服务
+    eviction-interval-timer-in-ms: 4000
+
+
+# 服务管理配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

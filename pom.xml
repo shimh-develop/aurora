@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.shimh</groupId>
+    <artifactId>aurora</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>aurora</name>
+
+    <modules>
+        <module>aurora-eureka</module>
+        <module>aurora-infrastructure</module>
+        <module>aurora-common</module>
+        <module>aurora-portal</module>
+        <module>aurora-cas</module>
+        <module>aurora-passport</module>
+        <!--<module>aurora-mybatisplus-generator</module>-->
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <aurora.version>${version}</aurora.version>
+        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <springboot.version>2.0.6.RELEASE</springboot.version>
+        <lombok.version>1.18.8</lombok.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <mybatis-plus.version>3.0.6</mybatis-plus.version>
+        <druid.version>1.1.20</druid.version>
+        <shiro.version>1.4.1</shiro.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.6.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.shimh</groupId>
+                <artifactId>aurora-common</artifactId>
+                <version>${aurora.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- MD5 加密-->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
+            <!-- shiro 整合 cas -->
+            <dependency>
+                <groupId>io.buji</groupId>
+                <artifactId>buji-pac4j</artifactId>
+                <version>4.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-cas</artifactId>
+                <version>3.8.0</version>
+            </dependency>
+
+
+            <!--<dependency>-->
+                <!--<groupId>org.apache.shiro</groupId>-->
+                <!--<artifactId>shiro-cas</artifactId>-->
+                <!--<version>${shiro.version}</version>-->
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>javax.servlet</groupId>-->
+                        <!--<artifactId>javax.servlet-api</artifactId>-->
+                    <!--</exclusion>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>javax.servlet</groupId>-->
+                        <!--<artifactId>servlet-api</artifactId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            <!--</dependency>-->
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <target>${maven.compiler.target}</target>
+                    <source>${maven.compiler.source}</source>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+    <repositories>
+        <!--阿里云镜像-->
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>
