@@ -7,7 +7,11 @@ package com.shimh.aurora.common.constant;
 public enum  ResultCode {
 
     SUCCESS(0, "成功"),
-    ERROR(1, "失败");
+    ERROR(1, "失败"),
+    REDIRECT(3, "重定向"),
+
+    USER_NOT_EXIST(2000, "用户不存在"),
+    USER_LOGIN_ERROR(2001, "用户名或密码错误");
 
 
 

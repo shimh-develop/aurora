@@ -13,6 +13,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>aurora-portal-admin</module>
+        <module>aurora-portal-service</module>
+        <module>aurora-portal-service-api</module>
+        <module>aurora-portal-service-client</module>
     </modules>
 
 

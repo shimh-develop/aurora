@@ -51,5 +51,9 @@ public class SysUser implements Serializable {
 
     private String email;
 
+    private String slat;
+
+    private String disabled;
+
 
 }

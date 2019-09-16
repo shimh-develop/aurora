@@ -12,6 +12,7 @@
     <description>基础设施层</description>
     <modules>
         <module>aurora-monitor</module>
+        <module>aurora-hystrix-dashboard</module>
     </modules>
 
     <parent>

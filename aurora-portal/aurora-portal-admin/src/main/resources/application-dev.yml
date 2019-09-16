@@ -1,9 +1,21 @@
 server:
   port: 4000
 
+#注册中心
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://aurora-eureka:2000/eureka
+  instance:
+    prefer-ip-address: true
+
 spring:
   application:
     name: aurora-portal-admin
+  thymeleaf:
+    cache: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -64,13 +76,17 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-cas:
-  server-url-prefix: http://localhost:8080/cas
-  client-url-prefix: http://localhost:${server.port}
-  client-name: aurora-portal-admin
-  session-timeout: 60000
+info:
+  app:
+    name: ${spring.application.name}
+    description: 集中权限管理平台
+
+# 单点登录
+passport:
+  clientName: aurora-portal-admin
+  filterChainDefinition:
+    "[/actuator/**]": anon
+
 logging:
   level:
-    org.pac4j: debug
     org.apache.shiro: debug
-

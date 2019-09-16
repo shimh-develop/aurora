@@ -28,7 +28,7 @@
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
         <springboot.version>2.0.6.RELEASE</springboot.version>
         <lombok.version>1.18.8</lombok.version>
-        <fastjson.version>1.2.58</fastjson.version>
+        <fastjson.version>1.2.60</fastjson.version>
         <mybatis-plus.version>3.0.6</mybatis-plus.version>
         <druid.version>1.1.20</druid.version>
         <shiro.version>1.4.1</shiro.version>
@@ -66,6 +66,24 @@
             <dependency>
                 <groupId>com.shimh</groupId>
                 <artifactId>aurora-common</artifactId>
+                <version>${aurora.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shimh</groupId>
+                <artifactId>aurora-passport</artifactId>
+                <version>${aurora.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shimh</groupId>
+                <artifactId>aurora-portal-service-api</artifactId>
+                <version>${aurora.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shimh</groupId>
+                <artifactId>aurora-portal-service-client</artifactId>
                 <version>${aurora.version}</version>
             </dependency>
 
@@ -115,6 +133,11 @@
                 <version>3.8.0</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
 
             <!--<dependency>-->
                 <!--<groupId>org.apache.shiro</groupId>-->

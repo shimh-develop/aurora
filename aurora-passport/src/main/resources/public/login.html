@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中央认证服务</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="css/base.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+
+</head>
+<body>
+<div class="login_box">
+    <div class="login_l_img"><img src="images/background.png" /></div>
+    <div class="login">
+        <div class="login_logo"><a href="#"><img src="images/user.png" /></a></div>
+        <div class="login_name">
+            <p>中央认证服务</p>
+        </div>
+        <form method="post" id="form">
+            <div style="color: red">
+                <span id="error"></span>
+            </div>
+
+            <input id="username" name="username" type="text" placeholder="用户名"/>
+
+            <input name="password" type="password" id="password" placeholder="密码"/>
+            <input type="button" class="btn btn-submit btn-block" id="login" value="登录" tabindex="6"/>
+        </form>
+    </div>
+    <div class="copyright">copyright©2019 aurora shimh</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#login").click(function () {
+            var username = $("#username").val()
+            if (!username) {
+                showError("请输入用户名")
+                return
+            }
+            var password = $("#password").val()
+            if (!password) {
+                showError("请输入密码")
+                return
+            }
+
+            $.ajax({
+                url: '/login',
+                type: 'post',
+                data: {username: username, password: password},
+                error: function () {
+                    showError("网络错误")
+                },
+                success: function (res) {
+                    if (res.code == 3) {
+                        location.href = res.data
+                    } else {
+                        showError(res.msg)
+                    }
+                }
+            })
+        })
+    })
+    function showError(msg) {
+        $("#error").html(msg)
+    }
+</script>
+</body>
+</html>
