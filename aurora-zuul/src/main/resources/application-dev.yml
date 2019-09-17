@@ -1,0 +1,49 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: aurora-zuul
+
+eureka:
+  client:
+    # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:2000}/eureka/
+  instance:
+    # 表示eureka client发送心跳给server端的频率，默认为30秒
+    leaseRenewalIntervalInSeconds: 20
+    # 健康检查的地址（依赖spring-boot-starter-actuator）
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+zuul:
+  ignoredServices: '*' # 屏蔽所有服务
+  routes:
+    aurora-portal-service: /portal/**
+  sensitive-headers:
+
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds:90000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 30000
+  eager-load: # 在启动时就初始化Ribbon相关类
+    enabled: true
+    clients: aurora-portal-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: 网关服务模块

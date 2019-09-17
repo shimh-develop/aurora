@@ -15,8 +15,8 @@
         <module>aurora-infrastructure</module>
         <module>aurora-common</module>
         <module>aurora-portal</module>
-        <module>aurora-cas</module>
         <module>aurora-passport</module>
+        <module>aurora-zuul</module>
         <!--<module>aurora-mybatisplus-generator</module>-->
     </modules>
 
