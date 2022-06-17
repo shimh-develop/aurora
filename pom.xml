@@ -28,7 +28,7 @@
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
         <springboot.version>2.0.6.RELEASE</springboot.version>
         <lombok.version>1.18.8</lombok.version>
-        <fastjson.version>1.2.60</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <mybatis-plus.version>3.0.6</mybatis-plus.version>
         <druid.version>1.1.20</druid.version>
         <shiro.version>1.4.1</shiro.version>
